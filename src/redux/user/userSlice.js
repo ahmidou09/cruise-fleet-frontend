@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const BASE_URL = 'https://cruise-fleet-baknd.onrender.com'
 export const login = createAsyncThunk('users/login', async (payload) => {
   try {
-    const response = await axios.post('http://localhost:3000/sessions', payload, { withCredentials: true });
+    const response = await axios.post(`${BASE_URL}/sessions`, payload, { withCredentials: true });
     return response.data;
   } catch (error) {
     return error.message;
@@ -12,7 +13,7 @@ export const login = createAsyncThunk('users/login', async (payload) => {
 
 export const checkLogin = createAsyncThunk('user/checkLogin', async () => {
   try {
-    const response = await axios.get('http://localhost:3000/sessions/logged_in', { withCredentials: true });
+    const response = await axios.get(`${BASE_URL}/sessions/logged_in`, { withCredentials: true });
     return response.data;
   } catch (error) {
     return error.message;
@@ -21,7 +22,7 @@ export const checkLogin = createAsyncThunk('user/checkLogin', async () => {
 
 export const register = createAsyncThunk('user/register', async (payload) => {
   try {
-    const response = await axios.post('http://localhost:3000/registrations', (payload), { withCredentials: true });
+    const response = await axios.post(`${BASE_URL}/registrations`, (payload), { withCredentials: true });
     return response.data;
   } catch (error) {
     return error.message;
@@ -30,7 +31,7 @@ export const register = createAsyncThunk('user/register', async (payload) => {
 
 export const logout = createAsyncThunk('user/logout', async () => {
   try {
-    const response = axios.delete('http://localhost:3000/sessions/log_out', { withCredentials: true });
+    const response = axios.delete(`${BASE_URL}/sessions/log_out`, { withCredentials: true });
     return response.data;
   } catch (error) {
     return error.message;

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const BASE_URL = 'https://cruise-fleet-baknd.onrender.com'
 const initialState = {
   items: [],
   status: 'idle',
@@ -11,7 +12,7 @@ export const fetchCars = createAsyncThunk('cars/fetchCars',
   async () => {
     try {
       const response = await axios.get(
-        'http://127.0.0.1:3000/items/',
+        `${BASE_URL}/items/`,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -29,7 +30,7 @@ export const fetchCars = createAsyncThunk('cars/fetchCars',
 export const addCar = createAsyncThunk('cars/addCar', async (newCar) => {
   try {
     const response = await axios.post(
-      'http://127.0.0.1:3000/items/',
+      `${BASE_URL}/items/`,
       newCar,
       {
         headers: {
@@ -47,7 +48,7 @@ export const addCar = createAsyncThunk('cars/addCar', async (newCar) => {
 
 export const deleteCar = createAsyncThunk('cars/deleteCar', async (id) => {
   try {
-    await axios.delete(`http://127.0.0.1:3000/items/${id}`, {
+    await axios.delete(`${BASE_URL}/items/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',

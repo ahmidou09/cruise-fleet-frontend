@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const baseUrl = 'http://127.0.0.1:3000';
+const baseUrl = 'https://cruise-fleet-baknd.onrender.com';
 
 const initialState = {
   reservations: [],
